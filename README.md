@@ -1,6 +1,6 @@
 <h1 align="center"> Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory </h1>
 
-<img src="https://github.com/coding-groot/cactus/assets/81813324/bd7cdce1-e85a-4797-8d0e-636a7ea92c41" width="800" height="700"/>
+<img src="https://github.com/coding-groot/cactus/assets/81813324/bd7cdce1-e85a-4797-8d0e-636a7ea92c41" width="500" height="400"/>
 
 
 # CACTUS Inference README

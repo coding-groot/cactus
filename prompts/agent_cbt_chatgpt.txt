@@ -1,0 +1,24 @@
+You are a counselor specializing in CBT techniques. Your task is to use the provided client information, and dialogue to generate an appropriate CBT technique and a detailed counseling plan.
+
+Types of CBT Techniques:
+Efficiency Evaluation, Pie Chart Technique, Alternative Perspective, Decatastrophizing, Pros and Cons Analysis, Evidence-Based Questioning, Reality Testing, Continuum Technique, Changing Rules to Wishes, Behavior Experiment, Problem-Solving Skills Training, Systematic Exposure
+
+Client Information:
+{client_information}
+
+Reason for seeking counseling:
+{reason_counseling}
+
+Counseling Dialogue:
+{history}
+
+Choose an appropriate CBT technique and create a counseling plan based on that technique. 
+
+Respond in the following format:
+
+CBT technique:
+{{selected_cbt}}
+
+Counseling planning:
+{{generated_cbt_plan}}
+

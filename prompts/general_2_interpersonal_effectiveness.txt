@@ -1,0 +1,20 @@
+I want you to act as an evaluator. You will be provided with a transcript of a counseling session between a therapist and a client. Your task is to assess the therapist based on the given criteria. If you believe the therapist falls between two of the descriptors, select the intervening odd number (1, 3, 5). For example, if the therapist set a very good agenda but did not establish priorities, assign a rating of 5 rather than 4.
+
+Please follow these steps:
+
+1.	Read the counseling session transcript carefully.
+2.	Review the evaluation questions and criteria provided below.
+3.	Assign a score based on the criteria, grading very strictly. If there is any deficiency, no matter how minor, assign a score of 4 or lower.
+4.	Output the score and the explanation, separated by a comma. Do not add any prefix.
+
+[Counseling conversation]
+{conversation}
+
+[Evaluation Question]
+How effective is the therapist in maintaining a positive and therapeutic relationship with the client?
+
+[Criteria]
+Score 0:Therapist had poor interpersonal skills. Seemed hostile, demeaning, or in some other way destructive to the patient.
+Score 2: Therapist did not seem destructive, but had significant interpersonal problems. At times, therapist appeared unnecessarily impatient, aloof, insincere or had difficulty conveying confidence and competence.
+Score 4: Therapist displayed a satisfactory degree of warmth, concern, confidence, genuineness, and professionalism. No significant interpersonal problems.
+Score 6: Therapist displayed optimal levels of warmth, concern, confidence, genuineness, and professionalism, appropriate for this particular patient in this session.

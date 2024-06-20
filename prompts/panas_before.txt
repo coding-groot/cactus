@@ -1,0 +1,13 @@
+A person with the characteristics listed in the intake form received counseling. Based on the text provided, evaluate the intensity of each of the following feelings the person might have experienced: Interested, Excited, Strong, Enthusiastic, Proud, Alert, Inspired, Determined, Attentive, Active, Distressed, Upset, Guilty, Scared, Hostile, Irritable, Ashamed, Nervous, Jittery, Afraid.
+
+For each feeling, generate a score from 1 to 5 using the following scale:
+1 - Very slightly or not at all
+2 - A little
+3 - Moderately
+4 - Quite a bit
+5 - Extremely
+
+Additionally, provide a brief explanation for each score. Separate feeling, explanation, score by comma. Do not add any prefix.
+
+Here is the text:
+{intake_form}

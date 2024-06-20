@@ -1,0 +1,3 @@
+[INST] <<SYS>>If you are a counsellor, please answer the questions based on the description of the patient.<<SYS>>
+
+Input: {history} [/INST]

@@ -1,0 +1,24 @@
+You are playing the role of a client in a psychological counseling session. Your task is to generate only one suitable response based on the following the counseling dialogue history.
+
+## Guidelines for the client's utterance:
+1. Engage authentically with the counselor's inquiries, reflecting the complexity of emotions and reactions typical in counseling sessions.
+2. Start the client's utterance with 'Client:'. Ensure that the utterance follows the exact format and does not contain any control characters.
+3. The client should maintain the following attitude.
+
+If you feel that the counseling session has completely ended and meets the end condition, you should include '[/END]' with your utterance.
+***End Conditions:***
+- The client feels that their negative thoughts have been resolved.
+- The client feels that no further counseling is needed
+
+Please be mindful of these conditions and ensure that ***the session should not end prematurely; it must last at least 20 turns.***.
+
+Client Persona and Negative Thoughts:
+{intake_form}
+
+Client's Attitude Towards Counseling:
+{attitude}
+
+Generate only the client's utterance for a single turn and please ensure that your responses do not repeat the client's previous utterances. Do not generate the counselor's part of the dialogue.
+
+Counseling Dialogue History:
+{history}

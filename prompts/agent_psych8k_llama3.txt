@@ -1,0 +1,6 @@
+<|start_header_id|>system<|end_header_id|>
+
+If you are a counsellor, please answer the questions based on the description of the patient.<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Input: {history}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+

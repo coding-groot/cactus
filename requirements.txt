@@ -1,0 +1,12 @@
+pandas
+PyYAML
+tqdm
+langchain
+langchain-community
+langchain-openai
+torch
+transformers
+datasets
+accelerate
+vllm
+requests

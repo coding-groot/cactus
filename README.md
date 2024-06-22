@@ -7,42 +7,42 @@
 
 # CACTUS Inference README
 
-## 셋팅 방법
+## Setup
 
-### 1. 가상환경 설정
+### 1. Virtual Environment Setup
 
-가상환경을 사용하여 필요한 패키지를 격리하여 설치할 수 있습니다. `conda` 또는 `virtualenv`를 사용하여 가상환경을 설정하세요.
+We recommend you create a virtual environment using `conda` or `virtualenv`.
 
-#### Conda 사용 시
+#### Using Conda
 
 ```sh
 conda create -n therapy-session python=3.8
 conda activate therapy-session
 ```
 
-#### Virtualenv 사용 시
+#### Using Virtualenv
 
 ```sh
-# virtualenv가 설치되지 않은 경우
+# if virtualenv is not installed
 pip install virtualenv
 
-# 가상환경 생성
+# Create a virtual environment
 virtualenv .venv
-source .venv/bin/activate  # Linux 및 macOS
+source .venv/bin/activate  # Linux & macOS
 .venv\Scripts\activate  # Windows
 ```
 
-### 2. 필요한 패키지 설치
+### 2. Installing Required Packages
 
-가상환경을 활성화한 후, `requirements.txt` 파일을 사용하여 필요한 패키지를 설치합니다.
+After activating the virtual environment, install the necessary packages using the `requirements.txt` file.
 
 ```sh
 pip install -r requirements.txt
 ```
 
-### 3. 설정 파일 구성
+### 3. Configuring the Settings File
 
-`conf.d` 폴더에 있는 `config.yaml.example` 파일을 복사하여 `config.yaml` 파일을 만듭니다. 그런 다음, `config.yaml` 파일에 다음 내용을 채웁니다.
+Copy the `config.yaml.example` file in the conf.d folder to create a `config.yaml` file. Then, fill in the following content in the `config.yaml` file.
 
 ```yaml
 openai:
@@ -55,16 +55,17 @@ llama3:
   host: http://<<Server IP or URL>>/v1
 ```
 
-## Counselor 에이전트 추가 방법
+## Adding a Counselor Agent
 
-Counselor 에이전트를 추가하려면 다음 단계를 따르세요.
+To add a counselor agent, follow these steps.
 
-### 1. 프롬프트 파일 만들기
+### 1. Creating a Prompt File
 
-- 프롬프트 파일은 `prompts` 폴더에 위치해야 합니다.
-- 파일명 패턴은 `agent_{counselor_type}_{llm_type}.txt` 형식을 따라야 합니다.
-  예: `agent_cactus_chatgpt.txt`
-- 프롬프트 파일에는 상담사의 응답 생성을 위한 템플릿이 포함되어야 합니다.
+- The prompt file should be located in the `prompts` folder.
+- The file name pattern should follow the format `agent_{counselor_type}_{llm_type}.txt`.
+  Example: `agent_cactus_chatgpt.txt`
+- The prompt file should include a template for generating the counselor's response.
+
   ```text
   Client information: {client_information}
   Reason for counseling: {reason_counseling}
@@ -72,23 +73,23 @@ Counselor 에이전트를 추가하려면 다음 단계를 따르세요.
   History: {history}
   ```
 
-### 2. Counselor 에이전트 클래스 추가
+### 2. Adding a New Counselor Agent Class
 
-`CounselorAgent` 클래스를 상속하여 새로운 Counselor 에이전트 클래스를 만듭니다. `self.language`를 반드시 설정해야 하며, 영어는 `english`, 중국어는 `chinese`로 설정합니다.
+Create a new counselor agent class by inheriting from the `CounselorAgent` class. Ensure to set `self.language` to either `english` for English or `chinese` for Chinese.
 
 ```python
 class NewCounselorAgent(CounselorAgent):
     def __init__(self, llm_type):
         super().__init__(llm_type)
-        self.language = "english"  # 예: 영어일 경우
-        # self.language = "chinese"  # 예: 중국어일 경우
+        self.language = "english"  # For English
+        # self.language = "chinese"  # For Chinese
         prompt_text = self.load_prompt(f"agent_new_{llm_type}.txt")
         self.prompt_template = PromptTemplate(
             input_variables=["history"],
             template=prompt_text)
 
     def generate(self, history):
-        # 필요한 경우 generate 함수를 재정의합니다.
+        # Override the generate function if necessary
         history = '\n'.join(
             [
                 f"{message['role'].capitalize()}: {message['message']}"
@@ -99,9 +100,9 @@ class NewCounselorAgent(CounselorAgent):
         return self.llm.generate(prompt)
 ```
 
-### 3. LLMFactory에 새로운 Counselor 추가
+### 3. Adding the New Counselor to LLMFactory
 
-`LLMFactory` 클래스에 새로운 Counselor 에이전트를 추가합니다.
+Add the new counselor agent to the `LLMFactory` class.
 
 ```python
 class LLMFactory:
@@ -118,13 +119,13 @@ class LLMFactory:
         raise ValueError(f"Unsupported LLM type: {llm_type}")
 ```
 
-## LLM 추가 방법
+## Adding a New LLM
 
-새로운 LLM을 추가하려면 다음 단계를 따르세요.
+To add a new LLM, follow these steps.
 
-### 1. 새로운 LLM 클래스 만들기
+### 1. Creating a New LLM Class
 
-`LLM` 추상 클래스를 상속하여 새로운 LLM 클래스를 만듭니다.
+Create a new LLM class by inheriting from the `LLM` abstract class.
 
 ```python
 class NewLLM(LLM):
@@ -142,9 +143,9 @@ class NewLLM(LLM):
         return response.content
 ```
 
-### 2. LLMFactory에 새로운 LLM 추가
+### 2. Adding the New LLM to LLMFactory
 
-`LLMFactory` 클래스에 새로운 LLM을 추가합니다.
+Add the new LLM to the `LLMFactory` class.
 
 ```python
 class LLMFactory:
@@ -161,43 +162,41 @@ class LLMFactory:
         raise ValueError(f"Unsupported LLM type: {llm_type}")
 ```
 
-## 실행 방법
+## Running Counseling-Eval
 
-### 1. 필수 파일 및 폴더 준비
+### 1. Prepare necessary files and folders
 
-- `prompts` 폴더에 필요한 프롬프트 파일을 준비합니다.
-- 입력 파일은 클라이언트 intake form을 포함하는 JSON 파일이어야 합니다.
+- Ensure the necessary prompt files are available in the `prompts` folder.
+- The input file should be a JSON file containing the client intake form.
 
-### 2. 프로그램 실행
+### 2. Run the program
 
-다음 명령어를 사용하여 프로그램을 실행할 수 있습니다.
+Run the program using the following command.
 
 ```sh
-python script.py --input_file {입력 파일 경로} --output_dir {출력 디렉터리} --counselor_type {counselor 유형} --llm_type {LLM 유형} --max_turns {최대 턴 수}
+python script.py --input_file {path to input file} --output_dir {output directory} --counselor_type {counselor type} --llm_type {LLM type} --max_turns {maximum number of turns}
 ```
 
-예시:
+Example:
 
 ```sh
 python script.py --input_file ./data/intake_forms.json --output_dir ./output --counselor_type cactus --llm_type chatgpt --max_turns 20
 ```
 
-### 3. 실행 스크립트 사용
+### 3. Using the Execution Script
 
-간편한 실행을 위해 `scripts/inference.sh` 스크립트를 사용할 수 있습니다. 이 스크립트를 사용하려면 다음과 같이 실행합니다.
+You can use the 'scripts/inference.sh' script for easy execution. Run it as follows:
 
 ```sh
 sh scripts/inference.sh
 ```
 
-### 4. vLLM 서버 실행
+### 4. Running the vLLM Server
 
-`chatgpt`를 제외한 모든 모델(`llama2`, `llama3` 등)은 vLLM을 사용하여 모델을 실행해야 합니다. 이를 위해 `scripts/run_vllm.sh` 스크립트를 참고하세요.
+All models except `chatgpt` (such as `llama2`, `llama3`, etc.) need to run on the vLLM server. Refer to the `scripts/run_vllm.sh` script for this.
 
 ```sh
 sh scripts/run_vllm.sh
 ```
 
-이 스크립트는 vLLM 서버를 설정하고 실행하는 데 필요한 모든 명령어를 포함하고 있습니다. vLLM 서버가 실행 중인 상태에서 프로그램을 실행하여 상담 세션을 시뮬레이션할 수 있습니다.
-
-위 명령어를 사용하여 프로젝트를 간편하게 실행하고 결과를 확인할 수 있습니다.
+This script includes all the commands necessary to set up and run the vLLM server. With the vLLM server running, you can simulate the counseling session using the program.

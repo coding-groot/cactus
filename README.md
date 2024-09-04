@@ -2,11 +2,12 @@
 <p align="center">
   <img src="https://github.com/coding-groot/cactus/assets/81813324/bd7cdce1-e85a-4797-8d0e-636a7ea92c41" width="400" height="350"/>
 </p>
+
 This is the official GitHub repository for [Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory](https://arxiv.org/abs/2407.03103).
 
 # Citation
 ```
-@misc{lee2024cactuspsychologicalcounselingconversations,
+@misc{lee2024cactus,
       title={Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory}, 
       author={Suyeon Lee and Sunghwan Kim and Minju Kim and Dongjin Kang and Dongil Yang and Harim Kim and Minseok Kang and Dayi Jung and Min Hee Kim and Seungbeen Lee and Kyoung-Mee Chung and Youngjae Yu and Dongha Lee and Jinyoung Yeo},
       year={2024},

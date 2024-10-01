@@ -3,7 +3,7 @@
   <img src="https://github.com/coding-groot/cactus/assets/81813324/bd7cdce1-e85a-4797-8d0e-636a7ea92c41" width="400" height="350"/>
 </p>
 
-This is the official GitHub repository for [Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory](https://arxiv.org/abs/2407.03103).
+This is the official GitHub repository for [Cactus: Towards Psychological Counseling Conversations using Cognitive Behavioral Theory](https://arxiv.org/abs/2407.03103) accepted at EMNLP Findings 2024.
 
 # Citation
 ```
